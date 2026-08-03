@@ -15,6 +15,8 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedGraficosRouteImport } from './routes/_authenticated/graficos'
 import { Route as AuthenticatedHistoricoRouteImport } from './routes/_authenticated/historico'
 import { Route as AuthenticatedNovaMedicaoRouteImport } from './routes/_authenticated/nova-medicao'
+import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
+import { Route as AuthenticatedRelatorioRouteImport } from './routes/_authenticated/relatorio'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +48,16 @@ const AuthenticatedNovaMedicaoRoute =
     path: '/nova-medicao',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRelatorioRoute = AuthenticatedRelatorioRouteImport.update({
+  id: '/relatorio',
+  path: '/relatorio',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,6 +65,8 @@ export interface FileRoutesByFullPath {
   '/graficos': typeof AuthenticatedGraficosRoute
   '/historico': typeof AuthenticatedHistoricoRoute
   '/nova-medicao': typeof AuthenticatedNovaMedicaoRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
+  '/relatorio': typeof AuthenticatedRelatorioRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -60,6 +74,8 @@ export interface FileRoutesByTo {
   '/graficos': typeof AuthenticatedGraficosRoute
   '/historico': typeof AuthenticatedHistoricoRoute
   '/nova-medicao': typeof AuthenticatedNovaMedicaoRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
+  '/relatorio': typeof AuthenticatedRelatorioRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,12 +85,28 @@ export interface FileRoutesById {
   '/_authenticated/graficos': typeof AuthenticatedGraficosRoute
   '/_authenticated/historico': typeof AuthenticatedHistoricoRoute
   '/_authenticated/nova-medicao': typeof AuthenticatedNovaMedicaoRoute
+  '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
+  '/_authenticated/relatorio': typeof AuthenticatedRelatorioRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/graficos' | '/historico' | '/nova-medicao'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/graficos'
+    | '/historico'
+    | '/nova-medicao'
+    | '/perfil'
+    | '/relatorio'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/graficos' | '/historico' | '/nova-medicao'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/graficos'
+    | '/historico'
+    | '/nova-medicao'
+    | '/perfil'
+    | '/relatorio'
   id:
     | '__root__'
     | '/'
@@ -83,6 +115,8 @@ export interface FileRouteTypes {
     | '/_authenticated/graficos'
     | '/_authenticated/historico'
     | '/_authenticated/nova-medicao'
+    | '/_authenticated/perfil'
+    | '/_authenticated/relatorio'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -134,6 +168,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedNovaMedicaoRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/perfil': {
+      id: '/_authenticated/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof AuthenticatedPerfilRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/relatorio': {
+      id: '/_authenticated/relatorio'
+      path: '/relatorio'
+      fullPath: '/relatorio'
+      preLoaderRoute: typeof AuthenticatedRelatorioRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -142,6 +190,8 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedGraficosRoute: typeof AuthenticatedGraficosRoute
   AuthenticatedHistoricoRoute: typeof AuthenticatedHistoricoRoute
   AuthenticatedNovaMedicaoRoute: typeof AuthenticatedNovaMedicaoRoute
+  AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
+  AuthenticatedRelatorioRoute: typeof AuthenticatedRelatorioRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -149,6 +199,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedGraficosRoute: AuthenticatedGraficosRoute,
   AuthenticatedHistoricoRoute: AuthenticatedHistoricoRoute,
   AuthenticatedNovaMedicaoRoute: AuthenticatedNovaMedicaoRoute,
+  AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
+  AuthenticatedRelatorioRoute: AuthenticatedRelatorioRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
