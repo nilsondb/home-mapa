@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Registro residencial da pressão com médias automáticas, gráficos e relatório para a consulta.",
+          "Substitua o mapa em papel: registre a pressão arterial em casa, com médias automáticas, gráficos e relatório em PDF para o seu médico.",
       },
     ],
   }),

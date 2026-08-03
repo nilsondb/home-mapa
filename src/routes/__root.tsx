@@ -83,17 +83,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Registre a pressão arterial em casa com médias automáticas, gráficos e relatório em PDF.",
+          "Substitua o mapa em papel: registre a pressão arterial em casa, com médias automáticas, gráficos e relatório em PDF para o seu médico.",
       },
       { name: "author", content: "MeuMapa" },
       { property: "og:title", content: "MeuMapa — mapa residencial da pressão arterial" },
       {
         property: "og:description",
         content:
-          "Registre a pressão arterial em casa com médias automáticas, gráficos e relatório em PDF.",
+          "Substitua o mapa em papel: registre a pressão arterial em casa, com médias automáticas, gráficos e relatório em PDF para o seu médico.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "MeuMapa — mapa residencial da pressão arterial" },
+      { name: "twitter:description", content: "Substitua o mapa em papel: registre a pressão arterial em casa, com médias automáticas, gráficos e relatório em PDF para o seu médico." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/11eb4f84-ec15-4eb2-927e-a8a4beab2a3e/id-preview-19363638--b94195e4-c644-4947-9b1c-017739b541cb.lovable.app-1785783237320.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/11eb4f84-ec15-4eb2-927e-a8a4beab2a3e/id-preview-19363638--b94195e4-c644-4947-9b1c-017739b541cb.lovable.app-1785783237320.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
