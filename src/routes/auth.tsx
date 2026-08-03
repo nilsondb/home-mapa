@@ -47,8 +47,8 @@ function AuthPage() {
     const fd = new FormData(e.currentTarget);
     const email = emailSchema.safeParse(fd.get("email"));
     const senha = senhaSchema.safeParse(fd.get("senha"));
-    if (!email.success) return toast.error(email.error.issues[0]!.message);
-    if (!senha.success) return toast.error(senha.error.issues[0]!.message);
+    if (!email.success) { toast.error(email.error.issues[0]!.message); return; }
+    if (!senha.success) { toast.error(senha.error.issues[0]!.message); return; }
 
     setCarregando(true);
     const { error } = await supabase.auth.signInWithPassword({
@@ -56,7 +56,7 @@ function AuthPage() {
       password: senha.data,
     });
     setCarregando(false);
-    if (error) return toast.error("E-mail ou senha incorretos.");
+    if (error) { toast.error("E-mail ou senha incorretos."); return; }
     navigate({ to: "/dashboard", replace: true });
   }
 
@@ -66,9 +66,9 @@ function AuthPage() {
     const nome = String(fd.get("nome") ?? "").trim();
     const email = emailSchema.safeParse(fd.get("email"));
     const senha = senhaSchema.safeParse(fd.get("senha"));
-    if (nome.length < 2) return toast.error("Informe seu nome completo.");
-    if (!email.success) return toast.error(email.error.issues[0]!.message);
-    if (!senha.success) return toast.error(senha.error.issues[0]!.message);
+    if (nome.length < 2) { toast.error("Informe seu nome completo."); return; }
+    if (!email.success) { toast.error(email.error.issues[0]!.message); return; }
+    if (!senha.success) { toast.error(senha.error.issues[0]!.message); return; }
 
     setCarregando(true);
     const { data, error } = await supabase.auth.signUp({
@@ -80,7 +80,7 @@ function AuthPage() {
       },
     });
     setCarregando(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     if (data.session) {
       navigate({ to: "/dashboard", replace: true });
     } else {
@@ -92,13 +92,13 @@ function AuthPage() {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const email = emailSchema.safeParse(fd.get("email"));
-    if (!email.success) return toast.error(email.error.issues[0]!.message);
+    if (!email.success) { toast.error(email.error.issues[0]!.message); return; }
     setCarregando(true);
     const { error } = await supabase.auth.resetPasswordForEmail(email.data, {
       redirectTo: `${window.location.origin}/reset-password`,
     });
     setCarregando(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Enviamos um link de recuperação para o seu e-mail.");
     setModoRecuperar(false);
   }
