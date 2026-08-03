@@ -14,16 +14,266 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      medias_periodo: {
+        Row: {
+          created_at: string
+          data: string
+          id: string
+          media_diastolica: number
+          media_pulso: number | null
+          media_sistolica: number
+          periodo: Database["public"]["Enums"]["periodo_dia"]
+          protocolo_id: string | null
+          qtd_afericoes: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          data: string
+          id?: string
+          media_diastolica: number
+          media_pulso?: number | null
+          media_sistolica: number
+          periodo: Database["public"]["Enums"]["periodo_dia"]
+          protocolo_id?: string | null
+          qtd_afericoes?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          data?: string
+          id?: string
+          media_diastolica?: number
+          media_pulso?: number | null
+          media_sistolica?: number
+          periodo?: Database["public"]["Enums"]["periodo_dia"]
+          protocolo_id?: string | null
+          qtd_afericoes?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "medias_periodo_protocolo_id_fkey"
+            columns: ["protocolo_id"]
+            isOneToOne: false
+            referencedRelation: "protocolos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      medico_paciente: {
+        Row: {
+          created_at: string
+          id: string
+          medico_id: string
+          paciente_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          medico_id: string
+          paciente_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          medico_id?: string
+          paciente_id?: string
+        }
+        Relationships: []
+      }
+      medicoes: {
+        Row: {
+          braco: Database["public"]["Enums"]["braco_medicao"]
+          created_at: string
+          data: string
+          diastolica: number
+          hora: string
+          id: string
+          metadata: Json
+          observacao: string | null
+          ordem: number
+          periodo: Database["public"]["Enums"]["periodo_dia"]
+          protocolo_id: string | null
+          pulso: number | null
+          sistolica: number
+          user_id: string
+        }
+        Insert: {
+          braco?: Database["public"]["Enums"]["braco_medicao"]
+          created_at?: string
+          data?: string
+          diastolica: number
+          hora?: string
+          id?: string
+          metadata?: Json
+          observacao?: string | null
+          ordem?: number
+          periodo: Database["public"]["Enums"]["periodo_dia"]
+          protocolo_id?: string | null
+          pulso?: number | null
+          sistolica: number
+          user_id: string
+        }
+        Update: {
+          braco?: Database["public"]["Enums"]["braco_medicao"]
+          created_at?: string
+          data?: string
+          diastolica?: number
+          hora?: string
+          id?: string
+          metadata?: Json
+          observacao?: string | null
+          ordem?: number
+          periodo?: Database["public"]["Enums"]["periodo_dia"]
+          protocolo_id?: string | null
+          pulso?: number | null
+          sistolica?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "medicoes_protocolo_id_fkey"
+            columns: ["protocolo_id"]
+            isOneToOne: false
+            referencedRelation: "protocolos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          altura_cm: number | null
+          created_at: string
+          crm: string | null
+          data_nascimento: string | null
+          email: string | null
+          foto_url: string | null
+          id: string
+          metadata: Json
+          nome: string
+          peso_kg: number | null
+          sexo: Database["public"]["Enums"]["sexo_tipo"]
+          telefone: string | null
+          updated_at: string
+        }
+        Insert: {
+          altura_cm?: number | null
+          created_at?: string
+          crm?: string | null
+          data_nascimento?: string | null
+          email?: string | null
+          foto_url?: string | null
+          id: string
+          metadata?: Json
+          nome?: string
+          peso_kg?: number | null
+          sexo?: Database["public"]["Enums"]["sexo_tipo"]
+          telefone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          altura_cm?: number | null
+          created_at?: string
+          crm?: string | null
+          data_nascimento?: string | null
+          email?: string | null
+          foto_url?: string | null
+          id?: string
+          metadata?: Json
+          nome?: string
+          peso_kg?: number | null
+          sexo?: Database["public"]["Enums"]["sexo_tipo"]
+          telefone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      protocolos: {
+        Row: {
+          created_at: string
+          data_inicio: string
+          duracao_dias: number
+          id: string
+          metadata: Json
+          minimo_dias: number
+          observacoes: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          data_inicio?: string
+          duracao_dias?: number
+          id?: string
+          metadata?: Json
+          minimo_dias?: number
+          observacoes?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          data_inicio?: string
+          duracao_dias?: number
+          id?: string
+          metadata?: Json
+          minimo_dias?: number
+          observacoes?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      is_medico_de: {
+        Args: { _medico: string; _paciente: string }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "paciente" | "medico" | "admin"
+      braco_medicao: "direito" | "esquerdo"
+      periodo_dia: "manha" | "noite"
+      sexo_tipo: "masculino" | "feminino" | "outro" | "nao_informado"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +400,11 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["paciente", "medico", "admin"],
+      braco_medicao: ["direito", "esquerdo"],
+      periodo_dia: ["manha", "noite"],
+      sexo_tipo: ["masculino", "feminino", "outro", "nao_informado"],
+    },
   },
 } as const
