@@ -55,7 +55,7 @@ function Relatorio() {
   const faixa = mediaS && mediaD ? classificarMediaResidencial(mediaS, mediaD) : null;
   const periodoTexto =
     dias.length > 0
-      ? `${formatarData(dias[0].data)} a ${formatarData(dias[dias.length - 1].data)}`
+      ? `${formatarData(dias[0]!.data)} a ${formatarData(dias[dias.length - 1]!.data)}`
       : "—";
 
   const dadosGrafico = dias.map((d) => ({
