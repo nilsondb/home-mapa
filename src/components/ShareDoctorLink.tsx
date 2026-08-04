@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 
 type SharedLink = { token: string; expires_at: string };
 
-export function ShareDoctorLink({ protocoloId }: { protocoloId?: string | null }) {
+export function ShareDoctorLink({ protocoloId }: { protocoloId?: string | null | undefined }) {
   const [open, setOpen] = useState(false);
   const [carregando, setCarregando] = useState(false);
   const [link, setLink] = useState<SharedLink | null>(null);
