@@ -231,6 +231,50 @@ export type Database = {
         }
         Relationships: []
       }
+      shared_links: {
+        Row: {
+          access_count: number
+          created_at: string
+          expires_at: string
+          id: string
+          protocolo_id: string | null
+          revoked_at: string | null
+          token: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          access_count?: number
+          created_at?: string
+          expires_at?: string
+          id?: string
+          protocolo_id?: string | null
+          revoked_at?: string | null
+          token?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          access_count?: number
+          created_at?: string
+          expires_at?: string
+          id?: string
+          protocolo_id?: string | null
+          revoked_at?: string | null
+          token?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "shared_links_protocolo_id_fkey"
+            columns: ["protocolo_id"]
+            isOneToOne: false
+            referencedRelation: "protocolos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -257,6 +301,27 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_shared_link: {
+        Args: { _dias?: number; _protocolo_id?: string }
+        Returns: {
+          access_count: number
+          created_at: string
+          expires_at: string
+          id: string
+          protocolo_id: string | null
+          revoked_at: string | null
+          token: string
+          updated_at: string
+          user_id: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "shared_links"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      get_shared_report: { Args: { _token: string }; Returns: Json }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -268,6 +333,7 @@ export type Database = {
         Args: { _medico: string; _paciente: string }
         Returns: boolean
       }
+      revoke_shared_link: { Args: { _token: string }; Returns: boolean }
     }
     Enums: {
       app_role: "paciente" | "medico" | "admin"
