@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useSession, useProfile } from "@/hooks/use-session";
 import { useMedicoes, useProtocoloAtivo } from "@/hooks/use-medicoes";
+import { ShareDoctorLink } from "@/components/ShareDoctorLink";
 import {
   agruparPorDia,
   classificarMediaResidencial,
@@ -171,12 +172,26 @@ function Dashboard() {
             </p>
           </div>
 
-          <Button asChild size="lg" className="mt-2 w-full rounded-2xl">
-            <Link to="/nova-medicao">
-              <Plus className="h-5 w-5" />
-              Nova medição
-            </Link>
-          </Button>
+          
+<div className="mt-2 flex flex-col gap-3 sm:flex-row">
+
+  <Button
+    asChild
+    size="lg"
+    className="w-full rounded-2xl sm:flex-1"
+  >
+    <Link to="/nova-medicao">
+      <Plus className="h-5 w-5" />
+      Nova medição
+    </Link>
+  </Button>
+
+  <div className="w-full sm:flex-1">
+    <ShareDoctorLink />
+  </div>
+
+</div>
+
         </div>
       </section>
 
