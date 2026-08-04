@@ -26,6 +26,7 @@ import {
   saudacao,
 } from "@/lib/meumapa";
 import { cn } from "@/lib/utils";
+import { ShareDoctorLink } from "@/components/ShareDoctorLink";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
@@ -177,6 +178,8 @@ function Dashboard() {
               Nova medição
             </Link>
           </Button>
+
+          <ShareDoctorLink protocoloId={protocolo?.id} />
         </div>
       </section>
 
