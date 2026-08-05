@@ -1,0 +1,11 @@
+services:
+  home-mapa:
+    container_name: home-mapa
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3011:3000"
+    env_file:
+      - .env
+    restart: unless-stopped

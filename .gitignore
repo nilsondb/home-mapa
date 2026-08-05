@@ -30,3 +30,23 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Builds e arquivos locais
+node_modules/
+.output/
+.tanstack/
+.wrangler/
+.env
+
+# Backups temporários
+*.bak-*
+
+# Builds e arquivos locais
+node_modules/
+.output/
+.tanstack/
+.wrangler/
+.env
+
+# Backups temporários
+*.bak-*
