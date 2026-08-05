@@ -659,85 +659,6 @@ function Relatorio() {
           </div>
         </section>
 
-        {dadosGrafico.length > 0 && (
-          <section className="card-surface p-5 print:break-inside-avoid print:shadow-none">
-            <h3 className="text-lg font-bold">
-              Evolução da pressão arterial
-            </h3>
-
-            <p className="mt-1 text-sm text-muted-foreground">
-              Médias da manhã e da noite durante
-              o período monitorado.
-            </p>
-
-            <div className="mt-5 h-[340px] w-full">
-              <ResponsiveContainer
-                width="100%"
-                height="100%"
-              >
-                <LineChart
-                  data={dadosGrafico}
-                  margin={{
-                    top: 15,
-                    right: 20,
-                    bottom: 35,
-                    left: 0,
-                  }}
-                >
-                  <CartesianGrid
-                    strokeDasharray="3 3"
-                    vertical={false}
-                  />
-
-                  <XAxis
-                    dataKey="nome"
-                    tick={{ fontSize: 11 }}
-                    angle={-20}
-                    textAnchor="end"
-                    height={75}
-                  />
-
-                  <YAxis />
-
-                  <Tooltip />
-                  <Legend />
-
-                  <ReferenceLine
-                    y={135}
-                    stroke="currentColor"
-                    strokeDasharray="4 4"
-                  />
-
-                  <ReferenceLine
-                    y={85}
-                    stroke="currentColor"
-                    strokeDasharray="4 4"
-                  />
-
-                  <Line
-                    type="monotone"
-                    dataKey="sistolica"
-                    name="Sistólica"
-                    stroke="currentColor"
-                    strokeWidth={3}
-                    dot={{ r: 4 }}
-                  />
-
-                  <Line
-                    type="monotone"
-                    dataKey="diastolica"
-                    name="Diastólica"
-                    stroke="currentColor"
-                    strokeDasharray="7 4"
-                    strokeWidth={2}
-                    dot={{ r: 4 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </section>
-        )}
-
         {observacoes.length > 0 && (
           <section className="card-surface p-5 print:shadow-none">
             <h3 className="font-bold">
@@ -833,6 +754,86 @@ function Relatorio() {
             </table>
           </div>
         </section>
+
+        {dadosGrafico.length > 0 && (
+          <section className="card-surface p-5 print:break-inside-avoid print:shadow-none">
+            <h3 className="text-lg font-bold">
+              Evolução da pressão arterial
+            </h3>
+
+            <p className="mt-1 text-sm text-muted-foreground">
+              Médias da manhã e da noite durante
+              o período monitorado.
+            </p>
+
+            <div className="mt-5 h-[340px] w-full">
+              <ResponsiveContainer
+                width="100%"
+                height="100%"
+              >
+                <LineChart
+                  data={dadosGrafico}
+                  margin={{
+                    top: 15,
+                    right: 20,
+                    bottom: 35,
+                    left: 0,
+                  }}
+                >
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    vertical={false}
+                  />
+
+                  <XAxis
+                    dataKey="nome"
+                    tick={{ fontSize: 11 }}
+                    angle={-20}
+                    textAnchor="end"
+                    height={75}
+                  />
+
+                  <YAxis />
+
+                  <Tooltip />
+                  <Legend />
+
+                  <ReferenceLine
+                    y={135}
+                    stroke="currentColor"
+                    strokeDasharray="4 4"
+                  />
+
+                  <ReferenceLine
+                    y={85}
+                    stroke="currentColor"
+                    strokeDasharray="4 4"
+                  />
+
+                  <Line
+                    type="monotone"
+                    dataKey="sistolica"
+                    name="Sistólica"
+                    stroke="currentColor"
+                    strokeWidth={3}
+                    dot={{ r: 4 }}
+                  />
+
+                  <Line
+                    type="monotone"
+                    dataKey="diastolica"
+                    name="Diastólica"
+                    stroke="currentColor"
+                    strokeDasharray="7 4"
+                    strokeWidth={2}
+                    dot={{ r: 4 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </section>
+        )}
+
 
         <footer className="card-surface p-5 text-sm print:break-inside-avoid print:shadow-none">
           <div className="flex items-start gap-3">
