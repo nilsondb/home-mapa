@@ -21,6 +21,7 @@ import { Route as AuthenticatedNovaMedicaoRouteImport } from './routes/_authenti
 import { Route as AuthenticatedPacientesRouteImport } from './routes/_authenticated/pacientes'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
 import { Route as AuthenticatedRelatorioRouteImport } from './routes/_authenticated/relatorio'
+import { Route as AuthenticatedRelatorio_oldRouteImport } from './routes/_authenticated/relatorio_old'
 import { Route as SharedTokenRouteImport } from './routes/shared.$token'
 
 const IndexRoute = IndexRouteImport.update({
@@ -83,6 +84,12 @@ const AuthenticatedRelatorioRoute = AuthenticatedRelatorioRouteImport.update({
   path: '/relatorio',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedRelatorio_oldRoute =
+  AuthenticatedRelatorio_oldRouteImport.update({
+    id: '/relatorio_old',
+    path: '/relatorio_old',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const SharedTokenRoute = SharedTokenRouteImport.update({
   id: '/shared/$token',
   path: '/shared/$token',
@@ -101,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/pacientes': typeof AuthenticatedPacientesRoute
   '/perfil': typeof AuthenticatedPerfilRoute
   '/relatorio': typeof AuthenticatedRelatorioRoute
+  '/relatorio_old': typeof AuthenticatedRelatorio_oldRoute
   '/shared/$token': typeof SharedTokenRoute
 }
 export interface FileRoutesByTo {
@@ -115,6 +123,7 @@ export interface FileRoutesByTo {
   '/pacientes': typeof AuthenticatedPacientesRoute
   '/perfil': typeof AuthenticatedPerfilRoute
   '/relatorio': typeof AuthenticatedRelatorioRoute
+  '/relatorio_old': typeof AuthenticatedRelatorio_oldRoute
   '/shared/$token': typeof SharedTokenRoute
 }
 export interface FileRoutesById {
@@ -131,6 +140,7 @@ export interface FileRoutesById {
   '/_authenticated/pacientes': typeof AuthenticatedPacientesRoute
   '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
   '/_authenticated/relatorio': typeof AuthenticatedRelatorioRoute
+  '/_authenticated/relatorio_old': typeof AuthenticatedRelatorio_oldRoute
   '/shared/$token': typeof SharedTokenRoute
 }
 export interface FileRouteTypes {
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/pacientes'
     | '/perfil'
     | '/relatorio'
+    | '/relatorio_old'
     | '/shared/$token'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/pacientes'
     | '/perfil'
     | '/relatorio'
+    | '/relatorio_old'
     | '/shared/$token'
   id:
     | '__root__'
@@ -176,6 +188,7 @@ export interface FileRouteTypes {
     | '/_authenticated/pacientes'
     | '/_authenticated/perfil'
     | '/_authenticated/relatorio'
+    | '/_authenticated/relatorio_old'
     | '/shared/$token'
   fileRoutesById: FileRoutesById
 }
@@ -274,6 +287,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRelatorioRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/relatorio_old': {
+      id: '/_authenticated/relatorio_old'
+      path: '/relatorio_old'
+      fullPath: '/relatorio_old'
+      preLoaderRoute: typeof AuthenticatedRelatorio_oldRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/shared/$token': {
       id: '/shared/$token'
       path: '/shared/$token'
@@ -292,6 +312,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedPacientesRoute: typeof AuthenticatedPacientesRoute
   AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
   AuthenticatedRelatorioRoute: typeof AuthenticatedRelatorioRoute
+  AuthenticatedRelatorio_oldRoute: typeof AuthenticatedRelatorio_oldRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -302,6 +323,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedPacientesRoute: AuthenticatedPacientesRoute,
   AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
   AuthenticatedRelatorioRoute: AuthenticatedRelatorioRoute,
+  AuthenticatedRelatorio_oldRoute: AuthenticatedRelatorio_oldRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

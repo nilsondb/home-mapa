@@ -6,8 +6,4 @@ export default defineConfig({
       entry: "server",
     },
   },
-
-  nitro: {
-    preset: "node-server",
-  },
 });
