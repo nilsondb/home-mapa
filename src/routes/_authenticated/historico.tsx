@@ -50,17 +50,19 @@ function BlocoPeriodo({
             {itens.map((m) => (
               <span
                 key={m.id}
-                className="rounded-lg bg-card px-2.5 py-1 text-sm font-semibold shadow-sm"
+                className="inline-flex items-center gap-1 rounded-lg bg-card py-1 pl-2.5 pr-1 text-sm font-semibold shadow-sm"
               >
                 {m.sistolica}×{m.diastolica}
                 {m.pulso ? (
-                  <span className="ml-1 text-xs font-normal text-muted-foreground">
+                  <span className="text-xs font-normal text-muted-foreground">
                     {m.pulso} bpm
                   </span>
                 ) : null}
+                <EditarMedicaoDialog medicao={m} />
               </span>
             ))}
           </div>
+
           {media.s && media.d ? (
             <p className="mt-3 text-sm">
               <span className="text-muted-foreground">Média </span>
