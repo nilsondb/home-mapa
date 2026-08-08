@@ -5,7 +5,9 @@ import { useSession } from "@/hooks/use-session";
 import { useMedicoes, useProtocoloAtivo } from "@/hooks/use-medicoes";
 import { agruparPorDia, addDias, formatarData, PERIODO_LABEL } from "@/lib/meumapa";
 import type { DiaAgrupado, Medicao } from "@/lib/meumapa";
+import { EditarMedicaoDialog } from "@/components/EditarMedicaoDialog";
 import { cn } from "@/lib/utils";
+
 
 export const Route = createFileRoute("/_authenticated/historico")({
   head: () => ({
