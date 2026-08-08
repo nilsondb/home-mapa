@@ -439,10 +439,13 @@ function SharedReport() {
         (a, b) => a.ordem - b.ordem
       );
 
+      const [primeiro, segundo] = ordenado;
+      if (!primeiro || !segundo) return -1;
+
       return minutosEntre(
-        ordenado[0].data,
-        ordenado[0].hora,
-        ordenado[1].hora
+        primeiro.data,
+        primeiro.hora,
+        segundo.hora
       );
     })
     .filter((intervalo) => intervalo >= 0);
@@ -1199,7 +1202,7 @@ function PainelCard({
 }: {
   titulo: string;
   valor: string;
-  detalhe?: string;
+  detalhe?: string | undefined;
   icone: React.ReactNode;
 }) {
   return (
